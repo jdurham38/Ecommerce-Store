@@ -37,3 +37,9 @@ export interface Product {
     name: string;
     value: string;
   };
+
+  export interface FAQItem {
+    id: string;
+    question: string;
+    answer: string;
+  }

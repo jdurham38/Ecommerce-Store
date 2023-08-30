@@ -1,3 +1,5 @@
+
+
 import './globals.css'
 import type { Metadata } from 'next'
 import { Urbanist } from 'next/font/google'
@@ -8,7 +10,7 @@ import Navbar from '@/components/navbar'
 const font = Urbanist({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Store',
+  title: 'Ice Gainz',
   description: 'Store',
 }
 
@@ -21,8 +23,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={font.className}>
         <Navbar/>
-        {
-      children}
+        {children}
       <Footer></Footer>
       </body>
     </html>
