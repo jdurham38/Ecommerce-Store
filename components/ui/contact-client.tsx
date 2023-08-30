@@ -1,4 +1,4 @@
-
+"use client"
 import React, { FormEvent } from "react";
 import emailjs from "emailjs-com";
 
