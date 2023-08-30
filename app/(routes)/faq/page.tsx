@@ -1,4 +1,4 @@
-import React from "react";
+
 import Container from "@/components/ui/container";
 import Link from "next/link";
 import FAQDropdown from "@/components/ui/faq-dropdown";
@@ -7,6 +7,7 @@ interface FAQItem {
   question: string;
   answer: string;
 }
+export const revalidate = 0;
 
 const FAQPage: React.FC = () => {
   const faqData: FAQItem[] = [
