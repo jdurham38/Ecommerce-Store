@@ -16,6 +16,7 @@ const CateringForBusiness = () => {
           aligning with the desires of health-conscious consumers. Crafted with quality ingredients
           and a range of flavors, our products can enrich your offerings and set your business
           apart.
+          
         </p>
         <p className="text-lg">
           Whether you're a store owner looking to diversify your inventory or a wellness center
