@@ -1,66 +1,11 @@
-"use client"
-import React, { FormEvent, useRef } from "react";
-import emailjs from "emailjs-com";
+
 import Container from "@/components/ui/container";
 import userData from "@/constants/data";
-
+import ContactClient from "@/components/ui/contact-client";
 export const revalidate = 0;
 
 export default function Contact() {
-  const formRef = useRef<HTMLFormElement | null>(null);
 
-  const send = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    const target = e.target as typeof e.target & {
-      name: { value: string };
-      email: { value: string };
-      message: { value: string };
-    };
-
-    // Send user's message
-    emailjs
-      .send(
-        "service_0xwkh51",
-        "template_lscrldk",
-        {
-          name: target.name.value,
-          email: target.email.value,
-          message: target.message.value,
-        },
-        "9u3bvylFqjIva-sQx"
-      )
-      .then((response) => {
-        console.log("SUCCESS!", response.status, response.text);
-
-        // Reset the form
-        if (formRef.current) {
-          formRef.current.reset();
-        }
-
-
-        // Send auto-reply
-        emailjs
-          .send(
-            "service_0xwkh51",
-            "template_auto_reply",
-            {
-              name: target.name.value,
-              email: target.email.value,
-            },
-            "9u3bvylFqjIva-sQx"
-          )
-          .then((response) => {
-            console.log("Auto-reply sent!", response.status, response.text);
-          })
-          .catch((error) => {
-            console.log("Failed to send auto-reply...", error);
-          });
-      })
-      .catch((error) => {
-        console.log("Failed to send message...", error);
-      });
-  };
 
   return (
     <Container>
@@ -182,46 +127,7 @@ export default function Contact() {
               </a>
             </div>
           </div>
-          <form className="form rounded-lg bg-[#F4F3EE] p-4 flex flex-col" onSubmit={send}>
-
-
-
-            <label htmlFor="name" className="text-sm font-semibold text-[#1F1F1F] mx-4">
-              {" "}
-              Your Name
-            </label>
-            <input
-              type="text"
-              className="font-light rounded-md border focus:outline-none py-2 mt-2 px-1 mx-4 focus:ring-2 focus:border-none ring-[#B3AEA8]"
-              name="name"
-            />
-            <label htmlFor="email" className="text-sm font-semibold text-[#1F1F1F] mx-4 mt-4">
-              Email
-            </label>
-            <input
-              type="text"
-              className="font-light rounded-md border focus:outline-none py-2 mt-2 px-1 mx-4 focus:ring-2 focus:border-none ring-[#B3AEA8]"
-              name="email"
-            />
-
-            <label htmlFor="message" className="text-sm font-semibold text-[#1F1F1F] mx-4 mt-4">
-              Message
-            </label>
-            <textarea
-              rows={4}
-              className="font-light rounded-md border focus:outline-none py-2 mt-2 px-1 mx-4 focus:ring-2 focus:border-none ring-[#B3AEA8]"
-              name="message"
-              placeholder="Be sure to put your email and number so we can get back to you!"
-            ></textarea>
-
-            <button
-              type="submit"
-              className="bg-black hover:bg-[#483A33] rounded-md w-1/2 mx-4 mt-8 py-2 text-gray-50 text-xs font-bold "
-            >
-              Send Message
-
-            </button>
-          </form>
+          <ContactClient />
         </div>
       </div>
     </section>
