@@ -4,6 +4,8 @@ import React, { useState } from "react";
 import Container from "@/components/ui/container";
 import Link from "next/link";
 
+export const revalidate = 0;
+
 interface FAQItem {
   question: string;
   answer: string;

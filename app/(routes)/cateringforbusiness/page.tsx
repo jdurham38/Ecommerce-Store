@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import Container from '@/components/ui/container';
 
+export const revalidate = 0;
+
 const CateringForBusiness = () => {
   return (
     <Container>
