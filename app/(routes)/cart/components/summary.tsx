@@ -37,6 +37,20 @@ const Summary = () => {
     window.location = response.data.url;
   }
 
+  useEffect(() => {
+    if (searchParams.get('success')) {
+      toast.success('Payment completed.');
+      removeAll();
+      window.location.href = "/"; // Redirect to the home page
+    }
+  
+    if (searchParams.get('canceled')) {
+      toast.error('Something went wrong.');
+      window.location.href = "/"; // Redirect to the home page
+    }
+  }, [searchParams, removeAll]);
+  
+
   return ( 
     <div
       className="mt-16 rounded-lg bg-gray-50 px-4 py-6 sm:p-6 lg:col-span-5 lg:mt-0 lg:p-8"
